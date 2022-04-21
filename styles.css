@@ -103,7 +103,7 @@ body {
     background: url(./varg/images/varg.jpg);
     background-size: cover; 
     border: none; 
-    background-attachment: fixed;
+
   }
 
   .parents {
@@ -138,6 +138,13 @@ body {
   display: flex; 
   border-radius: 5px
 
+}
+
+.parents {
+  display: flex; 
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 10rem;
 }
 
 }

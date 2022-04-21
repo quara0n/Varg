@@ -1,0 +1,760 @@
+-------------------BASIC SELECTORS-------------------
+                --html--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="http://google.com" target="_blank">Google</a>
+  </body>
+</html>
+
+----------------------------------------------------------------------------------
+<a href="http://google.com" target="_blank">Google</a>
+
+
+we can select selectors based on:
+- type, ID, class, Attribute
+
+                --CSS---
+.(class) or #(id)product { 
+
+<section id="product"></section>
+<a href="http://google.com" target="_blank">Google</a>
+
+}
+
+difference between class and id attributes? 
+- we can not have multiple elements with the same id (not having same people with same passport number)
+
+a[href*="google"] {
+  color: yellow;
+}
+
+- this code allows the link to have more inside it, and we are less prone to error. 
+
+
+a[href^="https"] {
+  color: yellow;
+}
+
+- all the anchor elements that starts with "https" will be coded by this block. 
+
+a[href$="https"] {
+  color: yellow;
+}
+
+- to check if an element ends with a certain value. 
+
+a[href^="https"][href$=".com"] {
+  color: yellow;
+
+  - start with https and end with .com 
+  - selecting by attribute is not that common, more based on type, id or class. 
+
+  -------------------------------RELATIONAL SELECTORS-----------------------------
+
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="products">
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi,
+      reprehenderit? Aliquid quos cupiditate, quasi blanditiis ad repudiandae
+      ullam, eveniet dignissimos nam animi veritatis possimus nihil commodi
+      illo? Expedita, recusandae ad.
+    </p>
+    <article>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non exercitationem fuga assumenda vel repellendus perspiciatis, ipsa a maxime, magni tempore voluptatibus inventore, veniam animi! Unde reiciendis consequuntur amet non facere delectus sapiente nostrum soluta, optio, odit autem voluptatibus cupiditate culpa sint odio maiores repellat vero. Sapiente similique nobis temporibus laudantium?</p>
+
+    </article>
+        </section>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate expedita, in deleniti praesentium fugiat molestias ipsa eius sed optio dicta fugit illo voluptatem excepturi atque quisquam provident consequuntur dolores dolore.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quo, aut tempora, perferendis dolorum dicta quibusdam eum sunt facere ut, incidunt ullam voluptates! Nam iusto temporibus iste modi incidunt consectetur!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore quisquam voluptatem accusantium voluptate id laboriosam quas vel sed mollitia laborum? Iusto esse ipsam sequi voluptate molestiae quaerat ducimus, sed ab.</p>
+
+    </p>
+  </body>
+</html>
+
+---------------------------------------------------------------------------------- 
+ <section id="products">
+
+- decendent selector = #products p { } - - combining two different selectors here.
+
+- if we have two p, using an article, we can youse #product > p { } and only get yellow marked on the longest..
+
+- #products + p {
+    color: yellow;
+  }
+
+  now, the third paragraph is orange. 
+
+- #products ~ p {
+    color: yellow;
+  }
+
+  - with this ~, every paragraph after the article will be yellow. 
+
+- Relational selectors: decendent selector ~ , <, >, section, article
+    cleaner markup 
+    fragile: dependent, moving elements around. 
+    not as fast as basic selectors. 
+    = prefer select element by their id or class. 
+
+    
+---------------------------psudo class selectors------------------------------------------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article>
+      <p class="first">Lorem ipsum dolor sit amet</p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+        voluptate! Iusto debitis laborum a. Quaerat ex, sunt magni nostrum
+        repellendus non minima tempora in doloribus perspiciatis! Error animi
+        est vero?
+      </p>
+    </article>
+  </body>
+</html>
+
+---------------------------------------------------------- 
+selectors: p.first { font-size: 140; font-style: italic; } - now, this only
+applies to the class of "first" what if we want it to apply to articles? article
+p.first { font-size: 140; font-style: italic; }
+
+<article>
+  <p class="first">Lorem ipsum dolor sit amet</p>
+</article>
+
+- psudo classes are classes that browser use by default, so the class="first" is
+not really needed - So in the example above, we remove the class="first" and
+instead write: article :first-child {}
+
+<article>
+  <h1>heading</h1>
+  <p>Lorem ipsum dolor sit amet</p>
+  <p>Lorem ipsum dolor sit amet</p>
+
+  - because "heading" is the "first-child", it only applies to that: we only get the italics etc there. 
+  - first-of-type includes heading and p below. why? first occourance of two different types
+
+article p:first-of-type {
+  font-size: 140;
+  font-style: italic;
+}
+
+article p:last-of-type/last-child {
+    font-weight: bold
+}
+
+- We use the p to refer to the paragraph, it only refers to the paragraph, and with last of type it refers to last paragrahp
+-----------------------------------
+<a href="#">link</a>
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+  <li>Item 4</li>
+  <li>Item 5</li>
+</ul>
+
+
+article :last-child 
+{ font-weight: bold; } 
+
+ul li:nth-child(odd) { 
+color: deeppink; } -
+
+- So what we are doing here, is that we are creating a hyperlink
+called link, then creating a unordered list (ul) that has 5 list items (li) -
+with the psudo-class selectors, we can chose the "nth-child", its like a
+function in css, so we use (). - :last-child is bold, so last item will be bold.
+
+a:visited,
+a:link {
+  color: dodgerblue;
+}
+
+a:hover,
+a:focus {
+  color: deeppink;
+}
+
+- so we have changed the items to be pink (odd), but we want to change the color of the link as well
+    so by doing as above, we say that all anchored:link will be dodgerblue
+    but we are not finished, we also want it to be pink when we hover over link and using tab 
+
+
+    pseudo-element selectors -----------------------------------------
+
+ <body>
+   lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Sed incidunt repudiandae quas nobis temporibus reiciendis
+    explicabo consectetur, dolor debitis illo nemo vero. Possimus saepe quas
+    asperiores odio, quidem consequatur totam dicta quos tempore atque assumenda
+    beatae veritatis, dolorum error similique unde sunt? Nesciunt facilis
+    perferendis facere rem quis animi iste!
+  </body>
+</html>
+
+in css we have pseudo-element selectors, so we dont need to use the inline generic selecotrs "span as was used above earlier"
+
+p::first-letter {
+  font-size: 140%; 
+  font-family: bold;
+}
+
+- in psudo element selectors we use :: instead of single : as in pseudo class selectors
+
+Pseudo-elements: 
+- to style part of an element: ex first letter 
+pseudo classes
+- to style elements in a particular state: ex Hovered anchor
+
+P::first-line { font-weight: bold; } p::selection { background-color: pink;
+P::first-line makes the whole line bold P:: selection, when you select it it is
+pink however, the heading is not pink when you select it: ::selection {} solves
+that
+
+p::before {
+  content: "...."
+}
+
+this is a pseudo-element allows this to be before the content of the p 
+
+p::before {
+  content: "....";
+  display: block
+}
+
+now, this is a block pseudo element, it takes up the whole horizontal space above the paragraph.
+
+
+p::after {
+  content: "....";
+  display: block;
+}
+
+you can also have it after.. 
+-----------------------------SELECTORS SPECIFICITY--------------------------- (psykologrom, hvilken skal jeg velge)
+ <body>
+    <article>
+      <h1 id="product">heading</h1>
+    </article>
+  </body>
+
+hi {
+  color: dodgerblue;
+}
+
+.highlights {
+  color: deeppink;
+}
+
+#product {
+  color: green;
+}
+#product {
+  color: brown;
+}
+
+
+- h1 { color: dodgerblue } .highlights { color: deeppink }
+
+- both these rules target the "h1" element - which one will be applied? class selector .highlihts!! more specific to id 
+
+- selector specificity: specifcity triangle: ID selector #products, class & attrbiute selectors .products., 
+
+-  element selector: selection when inspecting the "heading" we can see the selectors being ruled out.
+
+
+Which one will come last of the #products? BROWN. because it is last. 
+
+.highlight#product {
+  color: dodgerblue;
+}
+
+= (1,1,0)
+
+left (0,0,0)
+number of ID selecotrs, number of class/attribute selectors, #(represent) elements representer 
+
+h1#products {
+  color: dodgerblue;
+}
+
+- Can also use the h1 element, which is more specific.
+</head>
+  <body>
+    <article class="featured">
+      <h1 id="products" class="highlight">heading</h1>
+    </article>
+  </body>
+</html>
+
+.figured #products {
+  color: darkolivegreen;
+}
+
+- using the lement figured, we can get an id + class. (1,1,0) 
+
+---------------inhearitance-------------------------------- (fra mitt kontro, benk)
+
+  </head>
+  <body>
+    <p>
+      Lorem ipsum <strong>dolor</strong> sit amet consectetur adipisicing elit.
+      Quis voluptatem officiis sed cumque nemo vitae debitis provident ut
+      officia. Ipsa tempore quae aliquid eius distinctio cumque inventore soluta
+      earum sed!
+    </p>
+  </body>
+</html>
+
+p {
+  color: dodgerblue;
+}
+
+So, in this case "dolor" still gets the color blue, as it has inherent the
+parents (p) proprety
+= inheritance helps us write less code. 
+
+What we dont want to inherent?? 
+
+well then we do this: (if we also want it to be black)
+
+p {
+  color: dodgerblue;
+  border: 1px solid black;
+}
+
+strong {
+  color: initial;
+  border: inherit <----- here we also get a border around "dolor"
+}
+-------------------------COLORS---------------------------------
+Colors: - named Colors - rgb - red, green, blue. -
+hsl - hexadecimal
+
+HEX 
+#e6cd10 = e6 is the hexadecimal representation of 230, cd = 205, 10 = 16
+
+</head>
+  <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: rgba(230, 205, 16, 0, 5); <-- 0,5 is a = transparency 
+   }
+
+   .box {
+  width: 200px;
+  height: 200px;
+  background-color: #e6cd10;  <-- we can use this instead, but without transpraency channel
+
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: hsl(53, 87, 77)
+}
+
+
+HSL: (53*, 87% , 77 %) hugh satutation lightness 
+
+53* what color is it, 87 %: saturation, 77 % = lightness. 
+
+-----------------------------GRADIENTS-----------------------
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(dodgerblue, yellow);
+}
+
+Here it is from top to bottom, but this can be changed. 
+
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(to right, dodgerblue, yellow);
+}
+
+Here it goes towards the right. 
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, dodgerblue, yellow);
+}
+-- here it goes from the corner and 45 degrees towards other corner. 
+
+.box {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(45deg, dodgerblue, yellow 30%);
+}
+
+- here most of the page is yellow. 
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: radial-gradient(circle at top left, white, yellow)
+}
+
+- using radical-gradient, we can have the white being a circle top left, while yellow gradient gets stronger towards bottom right
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: rgb(124, 61, 118);
+  background: linear-gradient(
+    16deg,
+    rgba(124, 61, 118, 1) 30%,
+    rgba(9, 121, 43, 0.973621103117506) 65%
+  );
+}
+
+- using the : https://cssgradient.io/
+
+----------------------------------BORDERS---------------------------------------
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: dodgerblue;
+  border: 10px solid royalblue;
+  border-width: 10px 20px 10px 20px;
+}
+
+
+border-width: 10px 20px 10px 20px; - start with top, right, buttom, left 
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: dodgerblue;
+  border: 10px solid royalblue;
+  border-width: 10px 20px 10px 20px; /* you can write 10px, 20px to make it shorter
+
+  .box {
+  width: 600px;
+  height: 200px;
+  background: dodgerblue;
+  border: 10px solid royalblue;
+  border-radius: 50px
+ }
+
+- here we have more rounded corners. we can "border radius" to 100 %, we get a full circle
+
+https://css-tricks.com/the-shapes-of-css/ 
+
+---------------------------------------- SHADOWS-------------------------
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: dodgerblue;
+  box-shadow: 0 0 30px grey;
+}
+
+10px (right), 10px (down), 30px (softer)
+
+or 0 0 30px we get an overall nice shadow around. 
+
+ <body>
+    <div class="box">
+      <h1>heading</h1>
+    </div>
+  </body>
+
+.box {
+  width: 600px;
+  height: 200px;
+  background: gold
+  box-shadow: 0 0 30px grey;
+}
+
+h1 {
+  color: white;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+by using the rgba and setting it to these variables, the shadow is blending with the background
+
+------------------------GRID---------------------------------------------
+
+.container {
+  display: grid;
+  border: 3px solid grey;
+  grid-template: repeat(3, 100px) / repeat(2, 100px);
+  justify-items: center;
+  align-items: center;
+  height: 100vh; 
+
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+}
+
+
+
+/* Aligning items: 
+Justify items (along the horizontal axis)
+align-items(along the vertical axis) 
+stretch is the default value, but since we have chosen width and height in box nothing changes.
+
+
+-------------------EXERCISE---------------------------
+
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="#">Forum</a></li>
+        <li><a href="#">Learning Paths</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </body>
+
+  html {
+  font-size: 62.5%;
+
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+  background-color: black;
+  padding: 0.7rem;
+}
+
+nav ul {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin: 0.5rem 0;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none; 
+}
+
+nav a:hover {
+  color: #ccc;
+}
+
+@media screen and (min-width: 768px) {
+  nav ul {
+    flex-direction: row;
+    justify-content: flex row;
+  }
+  nav li {
+    margin: 0 1rem;
+  }
+
+}
+
+/* text-decoration takes away underlining that is from the beginning
+list-style takes away bullet points. 
+
+---------------------------------4 FLASH OF USTYLED TEXT-----------------------
+
+-------------------------EXERCISE TOPOGRAPHY-----------------------------
+
+html {
+  font-size: 62.5%;
+}
+
+.container {
+  max-width: 1140px;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: sans-serif;
+  color: #333;
+  padding: 2rem;
+  line-height: 1.5;
+}
+
+img {
+  width: 100%;
+  padding: 2rem 0 0 0;
+  height: 400px;
+  width: 1200px;
+  object-fit: contain;
+}
+
+p {
+  font-family: serif;
+  font-style: italic;
+}
+
+h1 {
+  font-size: 5.653rem/90.44px;
+}
+
+h2 {
+  font-size: 3.998rem/63.96px;
+}
+
+h3 {
+  font-size: 2.827rem/45.23px;
+}
+
+ol,
+li {
+  margin: 2rem;
+  list-style: circle;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.1;
+}
+
+----------------------------------IMAGES 60 MIN -------------------------------------
+ IMAGE TYPES AND FORMATS: 
+
+ 
+---------------------FILTERS----------------------------- (from før døren inn til grindehytta, når jeg tar på døren forandrer den filter til grå)
+Filters: 
+
+Greyscale
+Blur
+contrast
+brightness
+saturate
+
+psudo class selectors
+:hover
+:active
+:visited 
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+
+  <img src="images/meal.jpg" alt="" class="meal" />
+
+  .meal:hover {
+  filter: grayscale(70%) blur(3px);
+}
+
+-----------------------------SUPPORTING HIGH_DENSITY SCREENS---------------- (fra første del sofaen, two iphones med samme bilde av suppe)
+
+Scale factor = 2x when for the picture dosnt match the amount of pixels the screen has. 
+- 320px for a 640 width. 
+
+Terms: 
+- phsyical resoltuion: actually number of pixels on device. 960x640
+- logical resolution: how they behave, 480x320 
+- device pixel ratio (DPR) physical / logical. Iphone 4 has 2. 
+- High density DPR > 1. more physical than logical pixels. 
+
+  <body>
+    <img
+      src="images/meal.jpg"
+      alt=""
+      class="meal"
+      srcset="images/meal.jpq 1x, images/meal@2x.jpg 2x, images/meal@3x.jpg 3x"
+    />
+  </body
+
+  Basically, we put the meal.full jpg into photoshop, and we make 3 version of the photo in terms of pixels
+  making the first 1200x (the original is 2400x), this makes it 3x scale factor for 400x400px
+  second photo meal.jpg x 2 is 800
+  third photo is meal.jpg x 1 which is 400px. 
+  When displaying these, we can get two photos, which are 400x400 and 800px800px with same hight and length
+
+  --------------------------------RESOLUTION SWITCHING----------- (fra andre siden av sofaen mot peisen)
+
+  different images for mobiles, tablets, laptops. ¨
+
+Retina display
+- iphone 8 667x375
+- ipad pro 11" 1024x768
+- macbook pro 15" 1440 x 900
+
+we can provide small, medium and large, and make the browser pick up the best suited images
+
+   src="images/meal.jpg"
+      alt=""
+      class="meal"
+      srcset="
+        images/meal.jpg      400w, <-- mobile
+        images/meal@2x.jpg   800w, <-- tablet
+        images/meal@3px.jpg 1200w <-- desktop. 
+      "
+    />
+
+    .meal {
+  width: 100vw;
+}
+
+By supplying 3 different images based on resolution, the browser can pick the ones that fits the device the best
+
+https://www.responsivebreakpoints.com/ 
+
+---------------------------------USING MODERN IMAGE FROMATS------------------- (fra peis)
+
+Conversion to WEBP
+Photshop (webpshop)
+sketch: design tool
+online tools (cloudconvert)
+command tools 
+
+https://cloudconvert.com/
+
+  <body>
+    <img src="images/meal.webp.webp" alt="" />
+    <img src="images/meal.jpg" alt="" />
+  </body>
+
+When you display these two imagages, they are almost identical, I couldnt tell the difference.
+So you get a lot smaller sizes image with webP

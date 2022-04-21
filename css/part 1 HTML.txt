@@ -1,0 +1,498 @@
+HTML basic (64 min) - Intro: Text, links, images, list & tables, container
+elements, strutural elements (from raglamyr parkering)
+
+
+TEXT --------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+    <title>Document</title>
+    <style>
+      strong {
+        color: red;
+      }
+    </style>
+
+    <p>I <strong>love</strong> penguin</p>
+  </head>
+
+  <body>
+    <a href="company/about.html">about me</a>
+    <a href="image/penguin.html" download>my hpto</a>
+    <a href="#section css">CSS</a>
+    <a href="http://google.com" target="_blank">google</a>
+    <a href="mailto:finne89@gmail.com">my mail</a>
+    <h1>html</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima animi
+      officia pariatur amet voluptate, cumque optio sapiente modi labore tempora
+      molestias nam, porro cum praesentium provident fugiat est. Rerum modi
+      soluta, fuga quia repellat dolorem sed ad temporibus tenetur amet
+      doloribus quas quam architecto illum voluptatum quo dolore aut. Aperiam,
+      consectetur! Saepe pariatur quis vitae autem placeat, fugit enim a
+      adipisci harum. Placeat iure culpa earum nulla recusandae odit suscipit
+      eligendi numquam, obcaecati enim minus! Cupiditate facilis voluptate
+      dignissimos odit mollitia nam, ut doloremque consequatur recusandae id
+      est! Ratione optio, fuga impedit dignissimos eaque consectetur saepe unde
+      libero sunt, at necessitatibus? Eaque nobis totam, quod similique quam,
+      maxime, repellat fugit porro reprehenderit minus enim magni accusantium
+      eum tempora nisi obcaecati explicabo animi quibusdam accusamus?
+      Consequatur corporis aliquid magni maiores! Esse, iure? Nostrum
+      temporibus, veniam placeat aliquid, excepturi necessitatibus obcaecati
+      aperiam commodi, aut adipisci maiores quos beatae. Eligendi perferendis
+      consectetur saepe quam dolorum odit voluptatem ipsam fuga! Libero corporis
+      laboriosam aperiam quaerat iure sint, dolorem soluta culpa quidem harum
+      hic tempora non totam sunt quasi blanditiis iste! Facilis, incidunt? Sit
+      dignissimos rerum eius dolorum itaque? Mollitia corporis impedit harum cum
+      magni, velit doloribus minus provident alias esse eveniet odio ex
+      perferendis.
+      asddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+    </p>
+    <h2>CSS</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto aut
+      cupiditate quidem cum nulla accusamus veritatis aliquam soluta ea eum,
+      magni placeat pariatur repudiandae velit at maxime et, quibusdam quae
+      atque rem, autem accusantium perspiciatis. Quam adipisci aut tempore
+      architecto dolorem, perferendis iure, voluptatum culpa, possimus ex
+      maiores consequuntur! Porro beatae ratione dicta quod. Eius a tempore
+      deserunt repudiandae sequi. Minima distinctio non optio dolores odit error
+      consequatur dolore illum unde libero amet autem aliquam exercitationem
+      minus voluptas, debitis vitae. Alias repellendus sit perspiciatis adipisci
+      nam praesentium deleniti natus id iusto obcaecati magni, nihil doloribus
+      non eum, vitae, repudiandae ullam modi optio fuga qui quae laboriosam
+      asperiores expedita libero! Perspiciatis corporis consequatur fugiat,
+      perferendis sint laudantium mollitia iusto incidunt adipisci eum tempora
+      dolores architecto quia odit sed laborum laboriosam, quas, quo nulla.
+      Adipisci doloribus ratione ab nobis repellat aut provident! Officiis est
+      deleniti iusto eaque ratione numquam adipisci eius veniam distinctio atque
+      nobis aspernatur assumenda unde natus recusandae libero quibusdam, rerum
+      iste at veritatis vero. Deserunt, praesentium maxime placeat dolorum vero
+      aperiam voluptate dolores eum dicta voluptatem odio animi nam, facilis
+      amet autem rerum fugiat asperiores ea consectetur minima minus, unde
+      nostrum cumque numquam? Quo dolorum perferendis eos aspernatur explicabo?
+    </p>
+    <h2 id="section CSS">CSS</h2>B
+    <a href="#">jump to top</a>
+  </body>
+</html>
+
+IMAGES PART 1: -------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=2.0" />
+    <title>Document</title>
+    <style>
+      strong {
+        color: red;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="images/coffee3.jpq" alt="this is a picture of coffee" />
+  </body>
+</html>
+
+Video and audio part 1 -------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      video {
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <video controls autoplay loop src="video/ocean.mp4">
+      your browser dosn't support videos
+    </video>
+    <audio control autoplay loop src="Give that woolf a banana">
+  </body>
+</html>
+
+: controls, autoplay and loop are boleans, if they arnt there well then they are automatically false and wont be playd. 
+: height with style dosnt matter, as it will set it own hight.
+
+LIST PART 1 ----------------------------------------------------------------------
+
+Unordered list
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      ul {
+        list-style-type: square;
+      }
+    </style>
+    <ul>
+      <li>about me</li>
+      <li>courses</li>
+      <ul>
+        <li>HTML</li>
+        <li>javascript</li>
+        <li>Git</li>
+      </ul>
+      <li>subscribe</li>
+      <li>courses</li>
+    </ul>
+  </body>
+</html>
+
+- ul is when order dosnt matter. 
+- li is short for list items nest list for hierarchy.
+- li*3 to get 3 li
+
+Ordered list: 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+<ol>
+  <li>preheat the oven</li>
+  <li>place the ingredient on the crust</li>
+  <li>put the pizza in the oven for 20 minutes</li>
+</ol>
+</ol>
+  </body>
+</html>
+
+ol>li*3 
+
+
+descriptive order: 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <dl>
+      <dt>HTML</dt>
+      <dd>hypertext markup language</dd>
+      <dt>CSS</dt>
+      <dd>cascading stylesheets</dd>
+      <dt>runes projects</dt>
+      <dd>coding</dd>
+      <dd>trading</dd>
+      <dd>training</dd>
+    </dl>
+  </body>
+</html>
+
+we use description list of implementing glossaries or to display meta data dt is
+descriptive title, dd descriptive description. this is a real example of display
+meta data about something.
+
+Tables ----------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td,
+      th {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px; 
+      }
+
+      tfoot {
+        text-align: left
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="2">expenses</th>
+        </tr>
+        <tr>
+          <th>category</th>
+          <th>amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>marketing</td>
+          <td>$100</td>
+        </tr>
+        <tr>
+          <td>accounting</td>
+          <td>$200</td>
+
+      </tbody>
+      <tfoot>
+       <tr>
+         <tr>
+           <th>Total</th>
+           <th>$300</th>
+         </tr>
+       </tr>
+      </tfoot>
+      </tr>
+    </table>
+  </body>
+</html>
+TR = tablerow, TH = Table header, TD = table datacell. 
+ table, th, td { 
+ border: 1px solid grey;
+}
+th = table header. 
+thead = tablehead
+tbody = tablebody 
+tfoot = table foot
+
+Look at the whole thing! 
+
+10 - Containers -------------------------------------------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .product {
+        background-color: gold;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="product">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <a href="#">link</a>
+    </div>
+    <div class="product">
+      <p>Lorem ipsum dolor sit amet.</p>
+      <a href="#">link</a>
+    </div>
+  </body>
+</html>
+
+somethimes we have to group elements fro styling elements. navigation bar =
+container for that element containers are used alot.
+setting the div class="product" and using styles for that elemnt, all div class=product will refer to the styling being set. 
+--------------HIGHLIGHTING ONLY ONE LINE OR ONE WORD--------
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .highlight {
+        background-color: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <span class="highlight">Lorem</span> ipsum dolor sit amet, consectetur
+      adipisicing elit. Consequatur, deleniti deserunt? Adipisci voluptas unde
+      labore earum fugit suscipit accusantium nemo, dolorum odit explicabo
+      excepturi quam praesentium ipsum laboriosam quas. Dolores.
+    </p>
+  </body>
+</html>
+
+a href is hypertext REFerence. HREF. shift + alt + down arrow. 
+duplicate ctrl + d to get both (using span we only highlight first word.)
+
+----------------------SEMANTIC ELEMENTS---------------------------------- (ved hoveddøren inn til gps helse
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article class="article">
+      <h1>heading</h1>
+      <p>
+        published
+        <time datetime="2021-01-01 17:00">January 1 2021 05:00pm</time>
+      </p>
+      <p>
+        <mark>Lorem</mark> ipsum dolor sit amet consectetur adipisicing elit.
+        Magni totam quae quod eius quis maxime et, nesciunt nihil ipsum vero
+        assumenda eum corrupti quas asperiores voluptatem tenetur alias, est
+        libero.
+      </p>
+      <figure>
+        <img src="" alt="" />
+        <figcaption>my coffee this morning</figcaption>
+      </figure>
+    </article>
+  </body>
+</html>
+
+- generic: - div and span 
+
+- semantic - article, figure, mark, time 
+
+- article: an independent, self cointained content - forum post, reviews etc. 
+
+- shift + ctrl + p = command centre. 
+
+- when we want to highlight, or mark content, we can use the mark element. 
+
+- some semantic elements arnt in the database, so we have to type
+
+them, such as figcaption and time
+
+---------------STRUCTERING A WEBPAGE--------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <head></head>
+  <nav></nav>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  </ul>
+  
+  <main></main>
+    <section></section>
+      <h2>Products</h2>
+      <article></article>
+      <article></article>
+      <article></article>
+  <section></section>
+  <aside></aside>
+  <footer></footer>
+  <nav></nav>
+  <ul></ul>
+
+</body>
+</html>
+
+
+most webpage have:
+- header: introductory content
+- main: main content of the page. more main we get validation error. 
+- section: 
+- footer: aside element not directly related to the main content. 
+
+after the main element, we have a "aside" element
+
+in the header and also for footer. we often have a navegation bar "nav"
+- and then unordered list "ul" - "li"
+
+sometimes in the main area, we may have section element we can have group releated content. 
+
+every section should have a heading. depends on the hierachy. 
+within the heading, we can use article, beucase we can use any indepdent self contained content
+
+we can also have multiple sections within an article 
+
+ul = unordered list 
+
+shift + ctrl + arrow down = duplicate. 
+
+------------------------SUMMARY-----------------------------
+
+Character sets: are chosen on the basis of the letters and symbols required.
+
+Block elements: <p>, <h1>, <h2>, <h3>, <h4>, <h5>, <h6>, <ul>, <ol>, <dl>, <pre>, <hr />, <blockquote>, and <address> elements are all block level elements.
+
+Container elements: 
+<div>	</>div>	A container for a block of content
+<span>	</span>	A container for in-line content, such as content inside a paragraph.  
+
+Description list: 
+A description list is a list of terms, with a description of each term. Lists in HTML are used for specifying particular information in list form. There are various types of 
+Lists in Html such as Ordered Lists, Unordered Lists, and description Lists
+
+Entity list: 
+An HTML entity is a piece of text ("string") that begins with an ampersand ( & ) and ends with a semicolon ( ; ) 
+
+HTML boilerplate
+A boilerplate in HTML is a template you will add at the start of your project.
+
+Hyperlink:
+In computing, a hyperlink, or simply a link, is a reference to data that the user can follow by clicking or tapping.
+
+Inline element
+A block-level element always starts on a new line and takes up the full width available. An inline element does not start on a new line and it only takes up as much width as necessary.
+ The <div> element is a block-level and is often used as a container for other HTML elements
+
+Relative URL
+Rather than including the entire URL for each page you link, relative URLs cut down on the workload and time needed. For example, coding /about/ is much faster than https://www.example.com/about
+
+semantic HTML 
+Semantic HTML or semantic markup is HTML that introduces meaning to the web page rather than just presentation. For example, a <p> tag indicates that the enclosed text is a paragraph. 
+This is both semantic and presentational because people know what paragraphs are, and browsers know how to display them
+
+structured elements:
+
+<footer>	Defines a footer for a document or section
+  <header>	Defines a header for a document or section
+  <main>	Defines the main content of a document
+  <mark>	Defines marked/highlighted text
+
+ zen coding:
+ Zen Coding is the library that allows you to code HTML and other structured code format significantly faster. For example, the single line
+
+ -------------------------------------------------

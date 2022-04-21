@@ -1,0 +1,353 @@
+pseudo-element selectors -----------------------------------------
+
+ <body>
+   lorem ipsum dolor sit amet consectetur
+    adipisicing elit. Sed incidunt repudiandae quas nobis temporibus reiciendis
+    explicabo consectetur, dolor debitis illo nemo vero. Possimus saepe quas
+    asperiores odio, quidem consequatur totam dicta quos tempore atque assumenda
+    beatae veritatis, dolorum error similique unde sunt? Nesciunt facilis
+    perferendis facere rem quis animi iste!
+  </body>
+</html>
+
+in css we have pseudo-element selectors, so we dont need to use the inline generic selecotrs "span as was used above earlier"
+
+p::first-letter {
+  font-size: 140%; 
+  font-family: bold;
+}
+
+- in psudo element selectors we use :: instead of single : as in pseudo class selectors
+
+Pseudo-elements: 
+- to style part of an element: ex first letter 
+pseudo classes
+- to style elements in a particular state: ex Hovered anchor
+
+P::first-line { font-weight: bold; } p::selection { background-color: pink;
+P::first-line makes the whole line bold P:: selection, when you select it it is
+pink however, the heading is not pink when you select it: ::selection {} solves
+that
+
+p::before {
+  content: "...."
+}
+
+this is a pseudo-element allows this to be before the content of the p 
+
+p::before {
+  content: "....";
+  display: block
+}
+
+now, this is a block pseudo element, it takes up the whole horizontal space above the paragraph.
+
+
+p::after {
+  content: "....";
+  display: block;
+}
+
+you can also have it after.. 
+-----------------------------SELECTORS SPECIFICITY--------------------------- (psykologrom, hvilken skal jeg velge)
+ <body>
+    <article>
+      <h1 id="product">heading</h1>
+    </article>
+  </body>
+
+hi {
+  color: dodgerblue;
+}
+
+.highlights {
+  color: deeppink;
+}
+
+#product {
+  color: green;
+}
+#product {
+  color: brown;
+}
+
+
+- h1 { color: dodgerblue } .highlights { color: deeppink }
+
+- both these rules target the "h1" element - which one will be applied? class selector .highlihts!! more specific to id 
+
+- selector specificity: specifcity triangle: ID selector #products, class & attrbiute selectors .products., 
+
+-  element selector: selection when inspecting the "heading" we can see the selectors being ruled out.
+
+
+Which one will come last of the #products? BROWN. because it is last. 
+
+.highlight#product {
+  color: dodgerblue;
+}
+
+= (1,1,0)
+
+left (0,0,0)
+number of ID selecotrs, number of class/attribute selectors, #(represent) elements representer 
+
+h1#products {
+  color: dodgerblue;
+}
+
+- Can also use the h1 element, which is more specific.
+</head>
+  <body>
+    <article class="featured">
+      <h1 id="products" class="highlight">heading</h1>
+    </article>
+  </body>
+</html>
+
+.figured #products {
+  color: darkolivegreen;
+}
+
+- using the lement figured, we can get an id + class. (1,1,0) 
+
+--------------------------------SYSTEM FONT STACK---------------------------knestrekkmaskinen
+
+can boost perforamnce
+no flash of unstyled text
+are more modern in relation to web fonts.
+native look
+overall: better experience
+different fonts for difference operating system. 
+
+
+body {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 2rem;
+}
+
+- apple system. eating apple 
+
+------------------------------------SIZING FONTS-----------------------------
+
+
+https://type-scale.com/ <-- to get the parameters and fontsize for headings. 
+
+<body>
+    <h1>Heading 1</h1>
+    <h2>heading 2</h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nemo
+      neque sapiente modi ea praesentium quasi eius distinctio voluptate, cumque
+      amet rerum nihil eum delectus quam dignissimos, repudiandae ipsam maiores
+      cupiditate dolores! Officia perspiciatis sed quibusdam quam et soluta,
+      perferendis itaque possimus quaerat facere autem saepe porro, impedit ab!
+      Velit.
+    </p>
+    <a href="#">link</a>
+  </body>
+
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-family: Georgia, "Times New Roman", Times, serif; <-- this to have same font size for headings, it overwrites body
+}
+
+h1 {
+  font-size: 4.209rem/67.34px;  <--- this to apply different font sizes to seperates headings. 
+}
+h2 {
+  font-size: 3.157rem/50.52px;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 200%;
+  }
+}
+
+------------------------------ VERTICAL SPACING-------------------en som squatter og andre pullups over.. squat rack. line-height. 
+
+Margin and line-height
+
+Law of proximity: 
+- objects that are close another seems related. 
+
+<body>
+    <h1>Heading 1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nemo
+      neque sapiente modi ea praesentium quasi eius distinctio voluptate, cumque
+      amet rerum nihil eum delectus quam dignissimos, repudiandae ipsam maiores
+      cupiditate dolores! Officia perspiciatis sed quibusdam quam et soluta,
+      perferendis itaque possimus quaerat facere autem saepe porro, impedit ab!
+      Velit.
+    </p>
+    <h1>Heading 1</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi nemo
+      neque sapiente modi ea praesentium quasi eius distinctio voluptate, cumque
+      amet rerum nihil eum delectus quam dignissimos, repudiandae ipsam maiores
+      cupiditate dolores! Officia perspiciatis sed quibusdam quam et soluta,
+      perferendis itaque possimus quaerat facere autem saepe porro, impedit ab!
+      Velit.
+    </p>
+  </body>
+
+  html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem; <---- standard is 1.5x font size.. you can also skip the REM as it adjusts 1.5* automatically. 
+
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 3rem 0 1rem;  <--- top, right, bottom, left. 
+}
+
+h1 {
+  font-size: 4.209rem/67.34px;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 200%;
+  }
+}
+
+----------------------------------HORIZONTAL SPACING(soldater ved siden av hverandre på roingen---------------------- Fra roapparatet
+
+letter SPACING: set to px. can inspect to and adjust too see what works best. 
+word SPACING: set to px, not rem. 
+width: line-length; just be 50-70 letters. better for eye. 
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px; <-- 
+  word-spacing: 5px; <--
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 3rem 0 1rem;
+}
+
+h1 {
+  font-size: 4.209rem/67.34px;
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 200%;
+  }
+}
+
+p {
+  width: 50ch; <-- 50ch means 50 zeros. zeros represents average letter size.
+}
+
+----------------------FOTMATTING TEXT (fra benkene og manualene til venstre)----------
+text = mamma
+Text-align (hun står i midten av benken og ser ut)
+text-indent (hun står ved siden av benken)
+text-decoration (står oppe på en planke pullups)
+text-transform (hun og ei jente inntil veggen)
+white-space (åpner hvite døren, og der går en kolonne til døren)
+column-* (to kolonner i gymen)
+direction (viser retning til kolonnen.)
+
+p + p {
+  width: 50ch;
+  text-indent: 1rem; <-- when you add another paragraph, the next one will have first word indentet, pushed forward. 
+}
+
+p {
+  width: 50ch;
+  text-decoration: underline; <-- underlines text. also line-through etc. 
+}
+
+p {
+  width: 50ch;
+  text-transform: capitalze; 
+}
+
+p {
+  width: 50ch;
+  white-space: nowrap
+}
+
+p {
+  width: 50ch; <-- characters in a line
+  white-space: nowrap; <--- putting all the characters in one line
+  border: 3px solid gold; <--- make is more neat
+  overflow: hidden; <--- hid what dosnt fit the page
+  text-overflow: ellipsis; <--- have ... for what dosnt fit the page 
+
+}
+
+p {
+  width: 50ch;
+  column-count: 2; <-- this way the text is split into 2 column
+  column-gap: 2rem; <-- gap between column 
+  column-rule: 3px dotted #999; <---- gap is filled with dotted grey color
+
+}
+
+body {
+  margin: 10px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 1px;
+  word-spacing: 5px;
+  direction: rtl; <-- right to left ltl = from left to right
+}                 We set in the body section as it applies to paragrahps, headings etc. 
+
+--------------------------------------Art direction------- (fra tv i stuein, hvis tven er større får vi et annet bilde enn hvis det lite, suppe vs dishes)------------
+
+Cropping a picture is art direction, f.eks chosin different px for desktop and mobile
+g
+<picture>
+      <source
+        media="(max-width: 500px)"
+        srcset="images/dishes.png"
+        media="(min-width: 501px)"
+        srcset="images/meal.jpq"
+      />
+      <img src="images/meal.jpg" alt="" />
+    </picture>
+
+    So, what we are doing here is that we use source and media to say
+    If the media = max width of 500px og less, return dishes images
+    However, if media has width of 501 or more, then get the meal image.
+
+     -----------------------------Scalable vector graphics------ (fra middagsbordet:)--

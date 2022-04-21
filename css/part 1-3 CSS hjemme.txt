@@ -1,0 +1,1551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    p {
+      color: black
+    }
+
+    #first {
+      color: blue;
+      font-weight: bold; 
+    }
+  </style>
+
+</head>
+<body>
+  <p  id= "first">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut, maiores dicta. Ratione delectus praesentium quaerat laudantium vitae laboriosam, quia voluptatibus, alias voluptas vel consequatur maxime nobis harum id? Magni, adipisci.<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora provident aut perspiciatis quia unde? Perferendis, dolores illo fugiat in ipsa, maxime, dignissimos saepe ex harum error fuga officiis dolorum illum.
+
+    </p>
+  </p>
+</body>
+</html>
+
+- seperation of concerns. 
+
+- rel = releationship. what type of reseouce we are linking to
+
+- using a relative url at href :same folder, so only need that.
+
+- when using style as above, the rules overwrite the ones above (link rel...)
+
+- inline styles: one style blue of the lorem and another color for the second ones
+- however, avoid them, violate the seperation of concern.
+
+- using #first is better. better syntax etc, better seperation of concerns. 
+
+------------------------------NORMALISING CSS------------------------------------------------
+First, we linked and references to CSS folder and styles, and also normalize.css in the index.html file.
+Basically, we've important normalize.css which sets certain parameter for the css with html,
+however, we have changed some of that back in the styles.css such as margin 
+-------------------BASIC SELECTORS-------------------
+                --html--
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="http://google.com" target="_blank">Google</a>
+  </body>
+</html>
+
+----------------------------------------------------------------------------------
+<a href="http://google.com" target="_blank">Google</a>
+
+
+we can select selectors based on:
+- type, ID, class, Attribute
+
+                --CSS---
+.(class) or #(id)product { 
+
+<section id="product"></section>
+<a href="http://google.com" target="_blank">Google</a>
+
+}
+
+difference between class and id attributes? 
+- we can not have multiple elements with the same id (not having same people with same passport number)
+
+a[href*="google"] {
+  color: yellow;
+}
+
+- this code allows the link to have more inside it, and we are less prone to error. 
+
+
+a[href^="https"] {
+  color: yellow;
+}
+
+- all the anchor elements that starts with "https" will be coded by this block. 
+
+a[href$="https"] {
+  color: yellow;
+}
+
+- to check if an element ends with a certain value. 
+
+a[href^="https"][href$=".com"] {
+  color: yellow;
+
+  - start with https and end with .com 
+  - selecting by attribute is not that common, more based on type, id or class. 
+
+  -------------------------------RELATIONAL SELECTORS-----------------------------
+
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="products">
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Excepturi,
+      reprehenderit? Aliquid quos cupiditate, quasi blanditiis ad repudiandae
+      ullam, eveniet dignissimos nam animi veritatis possimus nihil commodi
+      illo? Expedita, recusandae ad.
+    </p>
+    <article>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non exercitationem fuga assumenda vel repellendus perspiciatis, ipsa a maxime, magni tempore voluptatibus inventore, veniam animi! Unde reiciendis consequuntur amet non facere delectus sapiente nostrum soluta, optio, odit autem voluptatibus cupiditate culpa sint odio maiores repellat vero. Sapiente similique nobis temporibus laudantium?</p>
+
+    </article>
+        </section>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate expedita, in deleniti praesentium fugiat molestias ipsa eius sed optio dicta fugit illo voluptatem excepturi atque quisquam provident consequuntur dolores dolore.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit quo, aut tempora, perferendis dolorum dicta quibusdam eum sunt facere ut, incidunt ullam voluptates! Nam iusto temporibus iste modi incidunt consectetur!</p>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore quisquam voluptatem accusantium voluptate id laboriosam quas vel sed mollitia laborum? Iusto esse ipsam sequi voluptate molestiae quaerat ducimus, sed ab.</p>
+
+    </p>
+  </body>
+</html>
+
+---------------------------------------------------------------------------------- 
+ <section id="products">
+
+- decendent selector = #products p { } - - combining two different selectors here.
+
+- if we have two p, using an article, we can youse #product > p { } and only get yellow marked on the longest..
+
+- #products + p {
+    color: yellow;
+  }
+
+  now, the third paragraph is orange. 
+
+- #products ~ p {
+    color: yellow;
+  }
+
+  - with this ~, every paragraph after the article will be yellow. 
+
+- Relational selectors: decendent selector ~ , <, >, section, article
+    cleaner markup 
+    fragile: dependent, moving elements around. 
+    not as fast as basic selectors. 
+    = prefer select element by their id or class. 
+
+    
+---------------------------psudo class selectors------------------------------------------------------- 
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article>
+      <p class="first">Lorem ipsum dolor sit amet</p>
+
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque,
+        voluptate! Iusto debitis laborum a. Quaerat ex, sunt magni nostrum
+        repellendus non minima tempora in doloribus perspiciatis! Error animi
+        est vero?
+      </p>
+    </article>
+  </body>
+</html>
+
+---------------------------------------------------------- 
+selectors: p.first { font-size: 140; font-style: italic; } - now, this only
+applies to the class of "first" what if we want it to apply to articles? article
+p.first { font-size: 140; font-style: italic; }
+
+<article>
+  <p class="first">Lorem ipsum dolor sit amet</p>
+</article>
+
+- psudo classes are classes that browser use by default, so the class="first" is
+not really needed - So in the example above, we remove the class="first" and
+instead write: article :first-child {}
+
+<article>
+  <h1>heading</h1>
+  <p>Lorem ipsum dolor sit amet</p>
+  <p>Lorem ipsum dolor sit amet</p>
+
+  - because "heading" is the "first-child", it only applies to that: we only get the italics etc there. 
+  - first-of-type includes heading and p below. why? first occourance of two different types
+
+article p:first-of-type {
+  font-size: 140;
+  font-style: italic;
+}
+
+article p:last-of-type/last-child {
+    font-weight: bold
+}
+
+- We use the p to refer to the paragraph, it only refers to the paragraph, and with last of type it refers to last paragrahp
+-------------------------------------
+  <body>
+    <article>
+      <a href="#">link</a>
+      <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+        <li>item 4</li>
+        <li>item 5</li>
+      </ul>
+    </article>
+  </body>
+
+
+body {
+  margin: 20px;
+}
+
+article :last-child {
+  font-weight: bold;
+}
+
+ul li:nth-child(odd) {
+  color: brown;
+}
+
+a:link,
+a:visited {
+  color: green;
+}
+
+a:hover,
+a:focus {
+  color: yellowgreen;
+}
+
+last-child = last element, 
+ul li: nth-child(odd) is a function. 
+a:link = every anchored link is green
+a: hover = when you hover over anchored. 
+a: focus = tab. 
+
+
+
+EXERCISE::
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+  </head>
+  <body>
+   <table>
+     <thead>
+       <tr>
+         <th>Country</th>
+         <th>Order ID</th>
+         <th>Order Amount</th>
+       </tr>
+     </thead>
+    <tbody>
+      <tr>
+        <td>USA</td>
+        <td>1000</td>
+        <td>1300</td>
+      </tr>
+      <tr>
+        <td>USA</td>
+        <td>1001</td>
+        <td>700</td> 
+      </tr>
+      <tr>
+        <td>CA</td>
+        <td>1002</td>
+        <td>2000</td>
+        <tr>
+          <td>CA</td>
+          <td>1003</td>
+          <td>1000</td>
+        </tr>
+        <tfoot>
+          <tr>
+            <th colspan="2">Total</th>
+            <th>Amount</th>
+          </tr>
+        </tfoot>
+      </tr>
+    </tbody>
+   </table>
+  </body>
+</html>
+
+body {
+  margin: 1px;
+}
+
+tr:nth-child(odd) {
+  background-color: #eef7ff;
+}
+
+th {
+  background-color: #427fef;
+  color: white;
+}
+
+table,
+tr,
+th {
+  border-collapse: collapse;
+  border: 1px solid grey;
+  border-left: 0;
+  border-right: 0;
+}
+
+tfoot {
+  text-align: left;
+}
+
+td,
+th {
+  padding: 10px;
+}
+
+-------------------BOX EXERCISE----------------
+
+body {
+  margin: 10px;
+}
+
+.box {
+  background-color: tomato;
+  width: 300px;
+  height: 300px;
+  box-shadow: 10px 10px lightgrey;
+  border-radius: 10px;
+}
+
+ <body>
+    <div class="box"></div>
+  </body>
+</html>
+
+-------------------------PART 2-----------------------------------
+
+The box model: (fra utenfor marens sitt rom)
+margin collapse is when you have to elements such as below:
+
+egaeg3  sdgsdgs kodfns sfbgk sdfong
+
+egaeg3  sdgsdgs kodfns sfbgk sdfong
+
+- when you set padding to 0, and margin to 20, the margin between them
+will not be 40, but 20, as the margins are collapsing. 
+- the padding is used to add space between the border and the content area of an element
+
+
+Sizing elements:-------------------------utenfor toalletet vestiblyen
+
+  <body>
+    <span class="box"></span>
+    <span class="box"></span>
+  </body>
+
+.box {
+  background-color: gold;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border: 10px solid greenyellow;
+  box-sizing: border-box; (resepsjonsitsotlen)
+}
+
+content box = 40x40.. 100-20+20+10+10 = 40
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 10px;
+}
+
+.box::before {
+  content: "hello";
+}
+
+.box {
+  background-color: gold;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  border: 10px solid greenyellow;
+  box-sizing: border-box;
+  display: inline-block; (lunsjbordet)
+}
+
+
+- using this, we can use all elements that are inserted before or after. 
+
+------------------------------------overlow------------------
+
+.box {
+  border: 3px solid gold;
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+}
+
+----------------------MEASUREMENT UNITS---------------------
+
+RELATIVE - ABSOLUTE
+- RELATIVE: Relative to viewport, %, REM, 
+ABSOULTE: px, cm, mm, alwaqys the same size. 
+
+
+body {
+  width: 500px;
+  height: 200px;
+}
+
+.box {
+  border: 5px solid gold;
+  width: 50%;
+  height: 50%;
+  background-color: aquamarine;
+}
+
+-- using EM and fontsize 5px. 
+
+body {
+  width: 500px;
+  height: 200px;
+  font-size: 5px;
+}
+
+.box {
+  border: 5px solid gold;
+  width: 10em/rem (this uses 16px as default)
+  height: 20em;
+  background-color: aquamarine;
+}
+
+----------------------FLEXIBLE BOX LAYOUT------------------
+
+ <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+
+.container {
+  border: 3px solid gainsboro;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 90vh;
+}
+
+.box {
+  width: 5rem;
+  height: 5rem;
+  background-color: gold;
+  margin: 1rem;
+}
+
+
+---------------------------------GRID---------------------
+
+.container {
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr; 
+  row-gap: 10px;
+  column-gap: 10px;
+  border: 3px solid grey;
+  height: 100vh;
+}
+
+.box {
+  background-color: gold;
+}
+
+.box-one {
+  grid-column: 1 / -1; <--- using another class, and changing its location. its panning acorss 2 cells.
+  grid-row: 
+  grid-area: 3 (row)/ colum (2) 3 / 2 *start and end*
+                                  
+}
+
+.container {
+  display: grid;
+  grid-template: 100px auto 100px / 30fr 70fr;
+  grid-template-areas:
+    "header  header"
+    "sidebar  main"
+    "footer  footer";
+  row-gap: 10px;
+  column-gap: 10px;
+  border: 3px solid grey;
+  height: 100vh;
+}
+
+.box {
+  background-color: gold;
+}
+
+.box-one {
+  grid-area: header;
+}
+
+.box-four {
+  grid-area: footer;
+}
+
+.box-two {
+  grid-area: sidebar;
+}
+
+.box-three {
+  grid-area: main;
+}
+
+
+------------------HIDING TEMPLATES FROM BENTES ROM------------
+
+  <body>
+  <p class="first">first</p>
+  <p>second</p>
+  </body>
+
+.first {
+  visibility: hidden; <--- first is gone, but the space is still there
+}
+
+.first {
+  display:none <--- first is completely gone and second has taken its place. 
+
+}
+
+--------------------------media queries------------------------
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.box {
+  background-color: gold;
+  padding: 1rem;
+}
+
+.box:nth-last-of-type(2) {
+  background-color: dodgerblue;
+}
+
+@media screen and (min-width: 600px) { <----- if container is larger than 600px, the container will be row instead of collumn
+  .container {
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 900px) { <---- if box is larger than 900, than box will be wihte. 
+  .container {
+    flex-direction: row;
+  }
+  .box {
+    background-color: white;
+  }
+}
+
+Printing: 
+
+@media print {
+  body {
+    font-size: 12pt;
+  }
+
+  .box {
+    padding: 0.5cm;
+  }
+}
+
+- basically, if we want to print this page, we want to use points and cms. aboslute measurement styles.
+
+----------------------TYPOGRAPHY---------------
+- art of creating easily read to use text. 
+
+
+body {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+p,
+a {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+- basically, instead of using the elements p, a, we can change the font family
+at the body sectino so that all elements have this font
+
+body {
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+p {
+  font-weight: bold;
+  font-size: 1rem;
+  font-style: italic;
+  color: #444
+}
+
+/* font weight is boldness. bold = 700. Normal = 400. 
+font-style: italics
+
+---------------------------------EMBEDDING WEB FONTS--------------------------------
+
+Web safe fonts: Arial, helvetica, georgia, Times New oman 
+
+where to find fonts: 'fontsquirrel.com' fonts.com myfonts.com 
+
+font format:
+- TTF
+- OTF
+- WOFF, WOFF2.0 are more compressed and more efficenct for WEB. 
+
+
+@font-face {
+  font-family: "opensans";
+  src: url("font/open-sans/opensans-bold-webfont.woff2") format('woff2'),
+       url("font/open-sans/opensans-bold-webfont.woff") format('woff');
+  font-weight: bold;
+  font-style: normal;
+
+}
+
+
+@font-face {
+  font-family: 'open_sansbold';
+  src: url("/font/open-sans/opensans-regular-webfont.woff2") format('woff2'),
+       url("/font/open-sans/opensans-regular-webfont.woff") format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+-------------------------Flash of unstyled text----------
+
+@font-face {
+  font-family: "opensansbold";
+  src: url("fonts/opensans/opensans-bold-webfont.woff2") format('woff2'),
+       url("fonts/opensans/opensans-bold-webfont.woff") format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: fallback;
+
+
+font-style: 
+fallback. use the fallback font while the main one is being used. 
+never use the block value. 
+optional: download it in case the main one dosnt cashe. 
+
+Development tools -> network -> 3G slow. 
+
+------------------------------------ FONT SERVICES--------------------------- fra beinpress
+
+Google Web Fonts - they are free. 
+Filter results to Open Sans. 
+Find the 700 bold. 
+Copy the code onto the index file as below. 
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;900&display=swap" rel="stylesheet">
+
+body {
+  margin: 10px;
+  font-family: "kuk tryne", Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+p {
+  color: #444;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+---------------------IMAGE TYPES AND FORMATS--------- (fra GPS Aksdal inngangen, tar bilde mens hun lager en GIF)
+
+Raster: 
+- comes from cameras/scanner
+- Formats: JPG, PNG, GIF; etc
+- more pixels = larger file size 
+
+Vector:
+- software (illustrator)
+- format: svg (scalable vector graphics)
+- look sharp at any size, not made up of pixels. 
+
+JPEG: 16M colors, not transparent, no animation
+GIF: 256 colors, transparent, animation possible
+PNG 16M colors, transparent, animation possible
+WebP 16M colors, transparen, animation possible (not supported IE)
+
+
+------------------CONTENT IMAGES (PULTEN TIL LINZI, hun spise suppe som vist på bilde, blurry AKSDAL)-------------------
+
+ </head>
+  <body>
+    <img class="meal" src="images/meal.jpg" alt="" />
+  </body>
+
+  .meal {
+  width: 100vw;
+}
+
+------------------BACKGROUND IMAGES (pulten på mitt gamle rom igjennom veggen, bilde av san fransisco broen bak pc)--------------------
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat; or repeat-x repeat only picture along the horizontal axix or repeat-y, vertically
+
+}
+
+body {
+  background: url(../images/bg-paper.jpg);
+  background-repeat: no-repeat; (fra stolene utenfor, bilde bak, ingen flere squats)
+  background-position (vibeke står i stille posisjon på pulten): 100px 100px; <--- here its pushed 100px horizontally right, and 100px vertically. 
+                                          you can also type in -100px pushing it left. 
+}   background-position: 100% 100px; pushing it to the right side of the container.            
+     background-size (håvard holder et stort bilde): 100% 200px; stretching the background image all the way horizontally. 
+     background-size: 100% 100%; why is there nothing here? because the body element is automatically
+     set hight to 0, so a 100 % of 0 becomes 0. 
+    height: 100vh; HOWEVER! if we set height to 100vh, it will cover the whole container. 
+    
+  background: url(../images/bg-sanfrancisco.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; <-- this will resize the background so it covers the entire container. 
+  background-attachment (håvard slått i veggen, står fast): fixed; <--- using this, the background image stays fixed, while heaidng moves while scrolling
+  height: 300vh; <------- allows for scrolling. without fixed it the background would be 3x size, being more blurry
+
+
+--------------------------------CSS sprites ---------------- (fra gymen)----
+
+Problems: 
+file size can get too large
+sprite files are not flexible. 
+
+https://cssspritestool.com/
+
+- bascially, upload the png og jpg photos here
+-> you get 1 picture with all the pictures combined in one. 
+-> you copy that picture onto images, then you get the stylesheet document and paste it into css.style
+
+  <body>
+    <span class="bg-dishes"></span>
+    <span class="bg-landing"></span>
+    <span class="bg-saturn"></span>
+    <span class="bg-rocketship"></span>
+    <span class="bg-ufo"></span>
+  </body>
+
+.bg-landing {
+  background: url("../images/css-sprite-combined.png") 0px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-dishes {
+  background: url("../images/css-sprite-combined.png") -100px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block; <-- because span is inline, we need to use this proprety to change for it to become an in-line block to change its hight and width.
+
+}
+
+.bg-ufo {
+  background: url("../images/css-sprite-combined.png") -200px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-rocketship {
+  background: url("../images/css-sprite-combined.png") -300px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+.bg-saturn {
+  background: url("../images/css-sprite-combined.png") -400px -0px;
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+}
+
+---------------------------DATA URLS-----------------------(fra innkjørseln grinde hytte)
+
+Formerly: Data URIs
+Another optimizaiton technique to reduce HTTP requests. 
+https://www.cssportal.com/
+using cssportal 
+paste photo file
+copy image url.  
+
+ </head>
+
+  <img
+    alt="landing.png"
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAFGmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0MzUyLCAyMDIwLzAxLzMwLTE1OjUwOjM4ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMSAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjAtMTAtMDdUMDY6NDA6MjQtMDc6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIwLTEyLTA2VDEwOjE2OjE3LTA4OjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIwLTEyLTA2VDEwOjE2OjE3LTA4OjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgcGhvdG9zaG9wOklDQ1Byb2ZpbGU9InNSR0IgSUVDNjE5NjYtMi4xIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjBhNjBjNTQ1LTkyM2Mt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"
+  />
+
+  Dev tools: 
+  -> took 0ms to dl it. so with data url we can reduce the number of url requests.
+
+  Problem:
+  size of embedded code > original resource. 
+  increased complexity. markup and workflow. 
+  not that common, but some may use them so good to know. 
+  
+  -------------------CLIPPING--------------------------------- (fra vedboden, klipper og ser en pil)
+https://bennettfeely.com/clippy/
+clipp whatever you want. 
+copy code below.
+make an img.meal class. 
+choose image type. 
+
+
+  body>
+   <img src="images/meal-cropped.jpg" alt="" class="meal">
+ </body>
+
+ .meal {
+  clip-path: polygon(
+    0% 20%,
+    60% 20%,
+    60% 0%,
+    100% 50%,
+    60% 100%,
+    60% 80%,
+    0% 80%
+  );
+}
+= the meal is formed as an arrow. pretty neat. you dont need adobe!! clipping is sick. 
+
+
+
+-------------------------------------SCALEABLE VECTOR GRAPHICS (from table hytte: romship, fantastisk fin på bordet )---
+
+Created in software
+format: svg
+
+https://www.svgbackgrounds.com/
+
+<body>
+  <img class="ufo" src="images/ufo.png" alt="">
+ </body>
+
+body {
+  background: url(../images/constellation.svg)
+}
+
+.ufo {
+  width: 1000px;
+}
+
+== With the vector graphics, they are very scalable as they are not created by pixels, but mXxJZyAvtP3CQrw8auTJdxUjcD0OXJmx55lYA2h62f
+also they require little data storage. 
+
+---------------------------------- ICON FONTS------------------------------(fra vasken hytte:)
+
+Font: awesome 
+ionicons 
+material design icons 
+
+https://fontawesome.com/
+
+<script src="https://kit.fontawesome.com/29bb65b1df.js" crossorigin="anonymous"></script>
+----> this link above is the kits code address 
+
+ <body>
+   <span class="icon">
+  <i class="fa-solid fa-users"></i>
+</span>
+ </body>
+
+----> This code I got from thee fontawesome page, and icon that I wanted. 
+----> Basically, the i class is inheriting the font size and color from the icon class seen below
+
+.icon {
+  font-size: 2rem;
+  color: dodgerblue;
+}
+
+
+-------------------------------FORMS----------------------------Creating a basic form-- (soverommet hytte, for å komme inn må du signere navn, email)
+
+ <body>
+    <form>
+      <label for="">Name</label>
+      <input type="text" />
+    </form>
+  </body>
+
+  -- We use label as it is better instead of paragraph, it lines up nicely, and its a in-line element
+
+
+
+    <body>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="Email">Email</label>
+        <input id="Email" type="email" />
+      </div>
+    </form>
+  </body>
+
+  -- so here we have named the label "name" as well, so that when we click on it the input box is ready to type
+  -- also, using a div or list items to do so, as we break the line and lay them vertically 
+  ps: we can wrap the two lines and add "div" to make it quicker. 
+
+    <body>
+    <form>
+      <div>
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="Email">Email</label>
+        <input id="Email" type="email" />
+      </div>
+      <button type="submit">register</button>
+      <button type="reset">clear</button>
+    </form>
+  </body>
+
+  --- continuing, here we added a button type "submit" and named it register, also a reset that resets everything
+  PS: shift + alt and arrow down duplicates the marked data.
+  PS: button is outisde the div container, as we want them do lay down horizontally. 
+
+
+---------------------------------STYLING FORMS (from krybbe soverommet: varg holder et skjema, kunstner styler det)--------------------
+
+  <body>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="Email">Email</label>
+        <input id="Email" type="email" />
+      </div>
+      <button type="submit">register</button>
+      <button type="reset">clear</button>
+    </form>
+  </body>
+
+  --> So, from the previous section, we have done some changes in stylesheet, however, we have also 
+      made a new class: "form-group" so that we do not violate the law of proximity. 
+      without this we are lining the elements close to eachother. 
+      with .form-group, we can add buttom margin so that the vertical lines seperates. 
+
+CSS: 
+      body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+[type="email"] {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+- Body: using the generic apple system font 
+- Label: display: block, so that they break the line and "name" and "email" labels go above. 
+adding attribute [] to the input selector element, so we can choose border, border radius, padding etc.
+however, we have to have seperate attribute for email. so we type that in to. 
+
+
+HTML INDEX: 
+  <body>
+    <form>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" type="text" />
+      </div>
+      <div>
+        <label for="Email">Email</label>
+        <input id="Email" type="email" />
+      </div>
+      <button type="submit">register</button>
+      <button type="reset">clear</button>
+    </form>
+  </body>
+
+STYLESHEET: 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+  padding: 1rem;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+[type="email"] {
+  border: 1px solid #ccc;
+  padding: 0.5rem 0rem;
+  border-radius: 5px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  padding: 0.5rem 0.7rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  border-color: #7db0fb;
+  outline: 0;
+  box-shadow: 0 0 0 4px rgb(24, 117, 255, 0.25);
+}
+
+button {
+  background: #4b85db;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+
+body: sets fonts + padding of all the elements
+Label: puts the name of the label on another block from the input 
+Input: using the attribute selector it can chose property:values of the text within the input
+Input: using the pseudo class selector for the attribute, we can change the proprety and values that are set for the focus selector
+button:
+- changing the default button border to 0. 
+- border-radius rounding up the corners. 
+- outline: 0 to set the color we want. 
+.form-group
+- margin-bottom to increase the space below so it looks more tidy, law of property attraction. 
+
+= image is neat and tidy of 
+
+
+MY EXAMPLE: 
+
+  <body>
+    <form>
+      <div class="thisgroup">
+        <label for="Firstname">Firstname</label>
+        <input id="Firstname" type="text" />
+        <label for="Lastname">Lastname</label>
+        <input id="Lastname" type="text" />
+        <label for="Age">Age</label>
+        <input id="Age" type="text" />
+        <label for="Occupation">Occupation</label>
+        <input id="Occupation" type="text" />
+      </div>
+      <button type="submit">Register</button>
+      <button type="reset">Clear</button>
+    </form>
+  </body>
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 1rem;
+  line-height: 1.5;
+}
+
+label {
+  display: block;
+}
+
+input[type="text"] {
+  border: 1px dotted rgb(119, 32, 32);
+  border-radius: 5px;
+  padding: 0.5rem 0.7rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+input[type="text"]:focus {
+  border-color: rgb(71, 10, 10);
+  outline: 0;
+  box-shadow: 0 0 0 4px rgb(71, 10, 10);
+}
+
+button {
+  color: white;
+  border-radius: 5px;
+  background-color: blueviolet;
+  border: 0;
+}
+
+.thisgroup {
+  margin-bottom: 1rem;
+}
+
+---------------------------------------------DATA LIST---- FROM RAULANDINNGANGEN: gir en liste i døren med pcer på rekke og rad, deretter to mulighet, A eller b = option. ()
+
+ <body>
+      <form>
+        <input type="text" list="countries" autocomplete="off"/>
+        <datalist id="countries">
+          <option data-value="1">Australia</option>
+          <option>Canada</option>
+          <option>India</option>
+          <option>United States</option>
+        </datalist>
+      </form>
+    </body>
+
+    So here we have created a input of type "text", made a list class which we set to be countries
+    when we want to have a list that comes as you tap the text form, you use the datalist element,
+    set the id=countries and chose the options you want. 
+
+----------------------------------------7- Drop down lists------------- dusjen til jørgen--, you have to select one out of them towls. then it drops down.
+
+ <body>
+      <form>
+   <select> 
+     <option value="">select a course..</option>
+     <option value="1"selected>htlm</option>
+     <option value="2">css</option>
+     <option value="3">javascript</option>
+   </select>  
+    </body>
+
+So, here we are using the select element and option. The value given to the first option is: select a course, and will be presented in the beginning. 
+the second one will list the option 1 as default, as it was selected.. 
+the other values will be dropped down below in the list. 
+The numbers are the values that the user will submit to the form. we utilize this with js. 
+
+----TOILET: sitter en på toalettet og peker opp.. 
+    <body>
+      <form>
+   <select> 
+     <optgroup label="Front-end-courses">
+      <option value="1">htlm</option>
+      <option value="2">css</option>
+      <option value="3">javascript</option>
+     </optgroup>
+     <optgroup label="Back-end-courses">
+      <option value="1">node.js</option>
+      <option value="2">Djang</option>
+      <option value="3">Solidity</option>
+     </optgroup>
+   </select>  
+    </body>
+
+    So, what we have done here is that we've added a "optgroup" which acts like a headline in the drop-down list.
+    We make a label class="front-endcourses", and a "back-end-courses".. so when we get the drop down list 
+    on the server, we have two "headings" and the language underneath. 
+
+
+-----------------------------Check boxes--------------- kjøkkenet til jørgen------------
+
+   <body>
+      <form>
+   <div>
+     <input type="checkbox"  id="front-end">
+     <label class="label-inline" for="front-end">front-end</label>
+   </div>
+   <div>
+     <input type="checkbox"  id="back-end" checked />
+     <label class="label-inline" for="back-end">back-end</label>
+   </div>
+    </body>
+  </from>
+  </head>
+
+  So hello. Using a input element of type checkbox, a box next to the say label. We have chosen the label to be 
+  called front-end. However, label is a block element, so we have to make it label-inline for it to be next to the checkbox.
+  We create two seperate div containers, and call the other one back-end. 
+  Theeen we can use "checked", so that its checked when we display the page. We can also use disabled. 
+
+  ---------------------------------RADIO BUTTONS----------------------- (from sofaen 2 seters: hører gull radio til øre)
+
+     <body>
+      <form>
+        <div>
+          <input type="radio" name="membership" id="silver" checked >
+          <label for="silver" class="label-inline">Silver</label>
+        </div>
+        <div>
+          <input type="radio" name="membership" id="Gold">
+          <label for="Gold" class="label-inline">Gold</label>
+        </div>
+  </form>
+</body>
+  </head>
+
+  using div to make two containers. setting label class to label-inline to remove block element.
+  Type = what type of input it is
+  ID = refers to the id the input has, in this case silver and gold. 
+  We also used the attribute "checked" here as in the previous case. 
+  Result: a round circle next to "silver". you can only one of the boxes, not both as in "check boxes" chapter.
+
+  ---------------------------SLIDERS--------------------------mann på 3 seters slider mens han synger high range.--
+
+  <body>
+      <form>
+        <input type="range" min="0" max="100" value="90" />
+      </form>
+    </body>
+
+    we use the type "range" here, give it a min"0", max"100" and a value"90" which is where the slider image ends. at 90 %.
+    using js we can display the value range as we pull up and down the range bar. 
+
+--------------------------FILE INPUT trappen(suitcase med files).------------------------------------------------------
+
+  <body>
+      <form>
+        <input type="file" accept=".jpg, .png">
+      </form> 
+     </body>
+
+     hello again. So, using the input and "file" we choose any file we want from the page. 
+     however, if we choose the attribute "accept" we limit it to what we want, may it be only .jpg or .jpg, and .png, or "image/*" "audio/*" only, or video "video/*" 
+
+---------------------- Grouping related fields------------ (from soverommet rett til høyre: grouping relate fields, fieldset + legend)
+
+ <form>
+        <fieldset>
+          <legend>billing address</legend>
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+        </fieldset>
+        <fieldset>
+          <legend>Payment</legend>
+          <input type="text" />
+          <input type="text" />
+          <input type="text" />
+        </fieldset>
+      </form>
+
+
+      Using fieldset + legend. We can group related fields.
+      we can also use "section" and "h2" instead of legend. both work fine. 
+
+      --------------------------------TRANSFORMING---------------------------------
+
+      perspective(200px) translatez(-50%)
+      - here the box has the perspective of 200px, and the box romves 50px away form us. 
+
+      perspective(200px) rotatey and rotatex 
+      - here they rotates like open hinge, or like starwas along x axis. 
+
+      body {
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  background-color: aqua;
+  overflow: hidden;
+  transition: rotate 0.5s ease-in-out;
+}
+
+.box:hover {
+  transform: perspective(200px) rotatey(45deg);
+  transform-origin: 0 50%
+
+  - here we get a more realistic 45 degree from the yangle, here the transform origin "hinge" is at the middle, like opening a door. 
+
+IMPORTANT::::
+
+  <body>
+      <div class="container">
+        <div class="box">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo, nisi.
+          Necessitatibus ut, molestias perferendis eligendi quaerat fuga officia
+          voluptatem cumque, omnis molestiae ex dolores provident maxime eum
+          architecto laboriosam rerum soluta nemo quam delectus? Repellat,
+          facilis quia, quod cum sequi asperiores ab nesciunt amet perferendis
+          atque sit! Dolorem, temporibus voluptatum!
+        </div>
+        <div class="box box-one">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis,
+          accusantium cum laudantium odit dolor sed aliquid nemo adipisci
+          tenetur autem!
+        </div>
+      </div>
+    </body>
+
+  body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background-color: blue;
+  height: 200px;
+  width: 250px;
+  overflow: hidden;
+}
+
+.box-one {
+  background-color: goldenrod;
+  height: 200px;
+  width: 250px;
+  overflow: hidden;
+}
+
+.container {
+  perspective: 200px;
+}
+
+.container .box:hover {
+  transform: rotateY(45deg);
+}
+
+.container .box-one:hover {
+  transform: rotateX(30deg);
+}
+
+I have to drill the classes and containers. The div class"container" is the whole thing, the div class box is just the text. 
+When we set perspective property in the .container, we do not need to have it in the transform attribute. 
+-------------------------------------------------TRANSIATION KJØKKENET I BØ-------: står og ser at noe beveger seg rolig. på bordet skifter farget..tar litt tid. 5 sek. 
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box {
+  background-color: blue;
+  height: 200px;
+  width: 250px;
+  overflow: hidden;
+  transition: transform 5s, linear 5s;
+}
+
+.box:hover {
+  transform: rotate(45deg);
+}
+
+We can use the transform 5s and linear 5s to let it happen in a linear style that takes 5 seconds. we can also set different background. 
+we have to change it for the .box:hover as well. 
+
+-----------------------------------------------ANIMATION-------------HUS I ÅLESUND, STIAN STÅR MED FRAMES foran tven,. 
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1.5);
+  }
+  25% {
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: scale(-1.5);
+    background-color: aqua;
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+.box {
+  background-color: blue;
+  height: 200px;
+  width: 250px;
+  overflow: hidden;
+  transition: transform 5s, cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  animation-duration: 4s;
+  animation-name: pop;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+
+
+CSS BESt pracitce: BEST NAMING PRACTICES ----------------------------------------------------------
+
+-------------------------VARIABLES--------------------------- 
+
+--------------------OBJECT-oriented CSS----------------------------
+
+seperate container from content. First rule !!
+
+.hero .btn {
+  background: gold;
+  border: 0;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.side-bar .btn {
+  background: gold;
+  border: 0;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+--- Ok, so using the first rule, we can remove .hero and all the other stuff underneath.. 
+
+
+.btn {
+  background: gold;
+  border: 0;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+
+----- So, now this .btn looks the same (two buttons with same structures, color etc: Sign up + contact). first principle
+
+2: seperate structure from skin. second princiuple. (fra benken)
+
+   <body>
+   
+<header class="hero"><button class="btn btn-primary">Sign Up</button></header>
+<aside class="side-bar"><button class="btn-btn-secondary">Contact</button></aside>
+
+  </head>
+
+  .btn {
+  background: gold;
+  border: 0;
+  border-radius: 30px;
+  padding: 1rem 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.btn-primary {
+  background: gold;
+}
+
+.btn-secondary {
+  background: dodgerblue;
+}
+
+
+-- so here we have a structure (.btn) and two skins (btn-primary and btn-secondary). This way 
+We have done a proper syntax. 
+
+----------------------------------BEM-------------------- Benken ålesund. 
+
+BLOCK ELEMENT MODIFIER.. 
+- to think of our webpage of components of blocks etc
+
+    <body>
+      <div class="card card--popular">
+        <header class="card__header">
+          <span class="card__price"></span>
+        </header>
+        <div class="card__body">
+          <button class="btn"></button>
+        </div>
+      </div>
+    </body>
+
+
+seperate using __ like card__header 
+card__price as it is part of the BEM
+card__body 
+card__btn .. no, beucasue btn is a independent block that can exist outside this block, so dropping the 16tXyj8P16GzCLsNqoI4eOrF8JI3X4HhCnbtUH74he
+btn. 
+
+what about modifiers?? 
+- popular verison, modify the other block more blue..  
+
+card card--popular (double hyfens) to seperate a block from a modifiers
+__ to seperate an element from a block. 
+
+BEM is a component that alot of project use.. so important. 
+
